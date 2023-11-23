@@ -1,16 +1,20 @@
 let contador = document.getElementById('contadorVisitas')
-
+let btn = document.getElementById('btnReestablecer')
 
 let contadorVisitas=()=>{
+
     let visitaspagina = localStorage.getItem('visitas')
-    if(visitaspagina){   
         visitaspagina++
         localStorage.setItem('visitas', visitaspagina)
-    }else{
-        localStorage.setItem('visitas', 0)
-    }  
+   
     contador.innerHTML = localStorage.getItem('visitas')
     
     }
 
- window.onload=contadorVisitas()
+
+    btn.addEventListener('click',()=>{
+        localStorage.setItem('visitas', 0)
+        contador.innerHTML = localStorage.getItem('visitas')
+    })
+
+contadorVisitas()
